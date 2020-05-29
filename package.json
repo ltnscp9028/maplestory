@@ -2,7 +2,7 @@
   "name": "maplestory",
   "version": "0.1.1",
   "private": true,
-  "homepage": "https://ltnscp9028.github.io/maple-helper",
+  "homepage": "https://ltnscp9028.github.io/maplestory",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -39,5 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://34.82.191.176:5000"
 }
