@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0e42e67fc95689b97df93b424934870c",
+    "revision": "7f259ccf9bab539b89e05d101c8612e4",
     "url": "/maplestory/index.html"
   },
   {
-    "revision": "40924c829ba44ec14be7",
+    "revision": "69d00b09d3368423344c",
     "url": "/maplestory/static/css/main.c055b32f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/maplestory/static/js/2.425c114b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "40924c829ba44ec14be7",
-    "url": "/maplestory/static/js/main.b3530249.chunk.js"
+    "revision": "69d00b09d3368423344c",
+    "url": "/maplestory/static/js/main.010d34ce.chunk.js"
   },
   {
     "revision": "9df3fd6064734f5fc23f",
