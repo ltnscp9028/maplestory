@@ -10,6 +10,7 @@
     "classnames": "^2.2.6",
     "combination-js": "^1.2.9",
     "gh-pages": "^2.2.0",
+    "http-proxy-middleware": "^1.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-favicon": "0.0.18",
@@ -38,6 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://34.82.191.176:5000"
+  }
 }

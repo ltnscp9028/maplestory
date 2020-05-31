@@ -32,7 +32,7 @@ class AddOp extends React.Component {
         console.log(tmpObj);
         // console.log(tmpObj);
         this.setState({
-            asdf: await fetch('/api/addop', {
+            asdf: await fetch('https://34.82.191.176:443/api/addop', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ class AddOp extends React.Component {
         tmpObj['lv'] = lv;
         // tmpObj[`${statArr}`] = statArr;
         this.setState({
-            gmAddop: await fetch('/api/addop/weapon', {
+            gmAddop: await fetch('https://34.82.191.176:443/api/addop/weapon', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
