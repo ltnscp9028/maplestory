@@ -10,15 +10,21 @@ class CalStaticAddOp extends React.Component {
     async componentDidMount() {
         if (this.props.check === 1) {
             this.setState({
-                tmp: await fetch(`/api/addop/${this.props.lv}/${this.props.sorm}`)
+                tmp: await fetch(`${this.url}/api/addop/${this.props.lv}/${this.props.sorm}`, {
+                    mode: 'cors',
+                    redirect: 'follow'
+                })
                     .then(res => res.json())
             });
         }
         else if (this.props.check === 2) {
             this.setState({
-                tmp: await fetch(`/api/addop/${this.props.lv}`)
+                tmp: await fetch(`${this.url}/api/addop/${this.props.lv}`, {
+                    mode: 'cors',
+                    redirect: 'follow'
+                })
                     .then(res => res.json())
-            })
+            });
         }
     }
 
