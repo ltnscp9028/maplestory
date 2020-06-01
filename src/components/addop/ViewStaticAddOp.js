@@ -1,6 +1,7 @@
 import React from 'react';
 
 class CalStaticAddOp extends React.Component {
+    url = 'http://34.82.191.176';
     state = {
         qaz: [],
         tmp: [],
@@ -9,13 +10,13 @@ class CalStaticAddOp extends React.Component {
     async componentDidMount() {
         if (this.props.check === 1) {
             this.setState({
-                tmp: await fetch(`https://34.82.191.176/api/addop/${this.props.lv}/${this.props.sorm}`)
+                tmp: await fetch(`/api/addop/${this.props.lv}/${this.props.sorm}`)
                     .then(res => res.json())
             });
         }
         else if (this.props.check === 2) {
             this.setState({
-                tmp: await fetch(`https://34.82.191.176/api/addop/${this.props.lv}`)
+                tmp: await fetch(`/api/addop/${this.props.lv}`)
                     .then(res => res.json())
             })
         }
