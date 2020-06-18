@@ -28,8 +28,6 @@ class Arcane extends React.Component {
         const wname = ['STR', 'DEX'];
         let tempA = {};
         for (let i = 0; i < tempArr.length; i++)tempA[`${wname[i]}`] = tempArr[i];
-        // tempA[`${this.state.temp}`] = this.state.temp;
-        // let arr = { temp: `${this.state.temp}` };
         console.log(tempA);
         await fetch('/api/addop/', {
             method: "POST",
@@ -37,7 +35,6 @@ class Arcane extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(tempA)
-            // { temp: "temp" }
         })
             .then(res => res.json())
     }

@@ -3,7 +3,6 @@ import React from 'react';
 class CalStaticAddOp extends React.Component {
     url = 'https://34.82.191.176';
     state = {
-        qaz: [],
         tmp: [],
     }
 
