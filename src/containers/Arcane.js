@@ -1,53 +1,64 @@
 /*eslint-disable */
 import React from 'react';
-import Data from './Data';
+import './Arcane.css';
 class Arcane extends React.Component {
     state = {
-        symbol_list: Array(6),
-        tempArr: Array(6),
+        ArcaneArr: Array(18).fill(0),
+        res: [],
     }
-    handleChangeSingle = (e) => {
+    loadArcane = async () => {
+        const { ArcaneArr } = this.state;
+        let ArcaneObj = {};
+        ArcaneObj['소멸의여로'] = {};
+        ArcaneObj['소멸의여로']['nowSymbolLevel'] = ArcaneArr[0];
+        ArcaneObj['소멸의여로']['nowSymbolCount'] = ArcaneArr[1];
+        ArcaneObj['소멸의여로']['getSymbolCount'] = ArcaneArr[2];
+        console.log(ArcaneObj);
         this.setState({
-            [e.target.name]: e.target.value,
-        });
+            res: await fetch('https://34.82.191.176/api/arcane/symbol', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(ArcaneObj),
+            }).then(res => res.json())
+        })
+        console.log(this.state.res);
     }
 
     handleChange = (e) => {
-        const { tempArr } = this.state;
+        const { ArcaneArr } = this.state;
         const index = e.target.name;
-        const nextStat = [...tempArr];
+        const nextStat = [...ArcaneArr];
         nextStat[index] = e.target.value;
         this.setState({
-            tempArr: nextStat,
+            ArcaneArr: nextStat,
         });
     }
 
-    handleSubmit = async (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
-        const { tempArr } = this.state;
-        const wname = ['STR', 'DEX'];
-        let tempA = {};
-        for (let i = 0; i < tempArr.length; i++)tempA[`${wname[i]}`] = tempArr[i];
-        console.log(tempA);
-        await fetch('/api/addop/', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(tempA)
+        this.loadArcane();
+        this.setState({
+            ArcaneArr: Array(16).fill(0),
         })
-            .then(res => res.json())
     }
-    render() {
 
+    render() {
+        const { ArcaneArr } = this.state;
         return (
-            <>
+            <div className="wrapper">
                 <form>
-                    <input value={this.state.tempArr[0]} onChange={this.handleChange} name='0' />
-                    <input value={this.state.tempArr[1]} onChange={this.handleChange} name='1' />
-                    <button onClick={this.handleSubmit}>버튼</button>
+                    <label>소멸의 여로</label>
+                    <input value={ArcaneArr[0]} onChange={this.handleChange} name={0} />
+                    <input value={ArcaneArr[1]} onChange={this.handleChange} name={1} />
+                    <input value={ArcaneArr[2]} onChange={this.handleChange} name={2} />
+                    <button onClick={this.handleSubmit}>등록</button>
                 </form>
-            </>
+                <div>nowSymbolLevel : {ArcaneArr[0]}</div>
+                <div>nowSymbolCount : {ArcaneArr[1]}</div>
+                <div>getSymbolCount : {ArcaneArr[2]}</div>
+            </div>
         );
     }
 }
