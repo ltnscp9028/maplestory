@@ -39,9 +39,9 @@ class Arcane extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.loadArcane();
-        this.setState({
-            ArcaneArr: Array(16).fill(0),
-        })
+        // this.setState({
+        //     ArcaneArr: Array(16).fill(0),
+        // })
     }
 
     render() {
