@@ -1,6 +1,8 @@
 /*eslint-disable */
 import React from 'react';
 import './Arcane.css';
+import ArcaneForm from '../components/arcane/ArcaneForm';
+import ViewArcaneCost from '../components/arcane/ViewArcaneCost';
 class Arcane extends React.Component {
     state = {
         ArcaneArr: Array(18).fill(0),
@@ -8,11 +10,18 @@ class Arcane extends React.Component {
     }
     loadArcane = async () => {
         const { ArcaneArr } = this.state;
+        const arcaneRegion = ['소멸의여로', '츄츄 아일랜드', '레헬른', '아르카나', '모라스', '에스페라'];
         let ArcaneObj = {};
-        ArcaneObj['소멸의여로'] = {};
-        ArcaneObj['소멸의여로']['nowSymbolLevel'] = ArcaneArr[0];
-        ArcaneObj['소멸의여로']['nowSymbolCount'] = ArcaneArr[1];
-        ArcaneObj['소멸의여로']['getSymbolCount'] = ArcaneArr[2];
+        for (let i = 0; i < 6; i++)ArcaneObj[`${arcaneRegion[i]}`] = {};
+        for (let i = 0, j = 0; i < 18; i += 3) {
+            ArcaneObj[`${arcaneRegion[i / 3]}`]['nowSymbolLevel'] = ArcaneArr[i];
+            ArcaneObj[`${arcaneRegion[i / 3]}`]['nowSymbolCount'] = ArcaneArr[i + 1];
+            ArcaneObj[`${arcaneRegion[i / 3]}`]['getSymbolCount'] = ArcaneArr[i + 2];
+        }
+        // ArcaneObj['소멸의여로'] = {};
+        // ArcaneObj['소멸의여로']['nowSymbolLevel'] = ArcaneArr[0];
+        // ArcaneObj['소멸의여로']['nowSymbolCount'] = ArcaneArr[1];
+        // ArcaneObj['소멸의여로']['getSymbolCount'] = ArcaneArr[2];
         console.log(ArcaneObj);
         this.setState({
             res: await fetch('https://34.82.191.176/api/arcane/symbol', {
@@ -48,16 +57,11 @@ class Arcane extends React.Component {
         const { ArcaneArr } = this.state;
         return (
             <div className="wrapper">
-                <form>
-                    <label>소멸의 여로</label>
-                    <input value={ArcaneArr[0]} onChange={this.handleChange} name={0} />
-                    <input value={ArcaneArr[1]} onChange={this.handleChange} name={1} />
-                    <input value={ArcaneArr[2]} onChange={this.handleChange} name={2} />
+                <form className="arcane_form">
+                    <ArcaneForm ArcaneArr={ArcaneArr} handleChange={this.handleChange} />
                     <button onClick={this.handleSubmit}>등록</button>
                 </form>
-                <div>nowSymbolLevel : {ArcaneArr[0]}</div>
-                <div>nowSymbolCount : {ArcaneArr[1]}</div>
-                <div>getSymbolCount : {ArcaneArr[2]}</div>
+                <ViewArcaneCost res={this.state.res} />
             </div>
         );
     }
